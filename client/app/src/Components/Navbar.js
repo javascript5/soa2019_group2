@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Wrapper from './Wrapper'
-import Button, { ActiveButton } from './Button/Button'
-import { getProfile } from '../Actions/profileActions'
+import Button, { ActiveButton } from './Button'
 var NavbarOutside = styled.div`
 border-bottom:1px solid #E8EEF2;
 background-color:#fff;
@@ -82,54 +81,7 @@ var RightMenu = styled.div`
 
 
 class Navbar extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            loginStatus: true,
-            userType: 'student'
-        }
-        
-    }
-
-    componentDidMount() {
-        if(localStorage.getItem('userId') != null){
-            this.setState({
-                loginStatus:true
-            })
-
-            getProfile(localStorage.getItem('userId')).then(res => {
-                this.setState({ 
-                    userType: res.profile.userType 
-                })
-            })
-        }else{
-            this.setState({
-                loginStatus:false
-            })
-        }
-        
-      }
-
     render() {
-        const LoggedInMenu = () => (
-            <ul>
-            {this.state.userType === 'tutor' ? <li><a href="/profile">โปรไฟล์</a></li> : <li><a href="/offer" data-cy="navOffer">ข้อเสนอ</a></li>}
-            <li><a href="/logout">ออกจากระบบ</a></li>
-            {this.state.userType === 'tutor' ? '' : <li><a href="/post"><ActiveButton width="146px" data-cy="navCreatePost">ลงประกาศ</ActiveButton></a></li>}
-        </ul>
-        )
-
-        const LoggedOutMenu = () => (
-            <ul>
-                <li><a href="/" data-cy="navLogin_btn">เข้าสู่ระบบ</a></li>
-                <li><a href="/signup">
-                    <ActiveButton width="146px">สมัครสมาชิก</ActiveButton>
-                </a></li>
-            </ul>
-         )
-
-        
-
         return (
             <NavbarOutside className={this.props.animationClassName}>
                 <Wrapper>
@@ -143,8 +95,12 @@ class Navbar extends Component {
 
                         </LeftMenu>
                         <RightMenu>
-                            {this.state.loginStatus ? <LoggedInMenu /> : <LoggedOutMenu />}
-
+                            <ul>
+                                <li><a href="/" data-cy="navLogin_btn">เข้าสู่ระบบ</a></li>
+                                <li><a href="/signup">
+                                    <ActiveButton width="146px">สมัครสมาชิก</ActiveButton>
+                                </a></li>
+                            </ul>
                         </RightMenu>
                     </NavbarWrapper>
                 </Wrapper>
