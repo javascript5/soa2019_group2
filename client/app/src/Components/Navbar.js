@@ -19,13 +19,14 @@ var NavbarWrapper = styled.div`
 
 
 var Logo = styled.a`
-    font-size:1.9em;
+    font-size:1.4em;
     padding-top:20px;
     padding-bottom:20px;
     font-family:'Prompt', sans-serif;
     font-weight: bold;
     color:#008FF6;
     cursor:pointer;
+    text-decoration:none;
     
     
 `
@@ -45,7 +46,7 @@ var LeftMenu = styled.div`
     & > ul >li >a{
         color:#7A90A8;
         text-decoration: none;
-        font-size:1.1em;
+        font-size:.9em;
         font-family:'Prompt', sans-serif;
     }
 `
@@ -73,7 +74,7 @@ var RightMenu = styled.div`
     & > ul > li > a{
         color:#7A90A8;
         text-decoration: none;
-        font-size:1.1em;
+        font-size:.9em;
         font-family:'Prompt', sans-serif;
     }
 `

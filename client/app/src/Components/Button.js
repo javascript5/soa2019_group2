@@ -6,7 +6,7 @@ export const ActiveButton = styled.button`
 width:${props => props.width}%;
 height:45px;
 color:#fff;
-font-size:1.1em;
+font-size:.9em;
 padding:0 20px 0 20px;
 background-color:#008FF6;
 font-family:'Prompt', sans-serif;
